@@ -1,0 +1,52 @@
+.app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+.bookContainer {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.bookImg {
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+
+.bookName {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.bookAuthor {
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.bookPrice {
+    color: black;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.buyButton {
+    background-color: #0070f3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.buyButton:hover {
+    background-color: #005bb5;
+}
