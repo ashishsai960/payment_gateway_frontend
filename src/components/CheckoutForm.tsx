@@ -5,7 +5,7 @@ import axios from "axios";
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import styles from './CheckoutForm.module.css';
 
-const CheckoutForm = ({ book }) => {
+const CheckoutForm = ({ jobs }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [error, setError] = useState(null);
@@ -19,10 +19,10 @@ const CheckoutForm = ({ book }) => {
 
         try {
             //replace the url with your server endpoint
-            const response = await axios.post('http://44.211.47.208:8080/api/payment/create-checkout-session', {
+            const response = await axios.post('http://51.20.106.102:9000/api/payment/create-checkout-session', {
                 userId: "123456",
-                name: book.name,
-                amount: book.price
+                name: jobs.name,
+                amount: jobs.price
             });
 
             const session = await response.data;

@@ -7,7 +7,7 @@
     font-family: Arial, sans-serif;
 }
 
-.bookContainer {
+.jobsContainer {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -15,23 +15,23 @@
     text-align: center;
 }
 
-.bookImg {
+.jobsImg {
     max-width: 100px;
     margin-bottom: 20px;
 }
 
-.bookName {
+.jobsName {
     font-size: 1.5rem;
     margin-bottom: 10px;
     color: black;
 }
 
-.bookAuthor {
+.jobsAuthor {
     color: #888;
     margin-bottom: 10px;
 }
 
-.bookPrice {
+.jobsPrice {
     color: black;
     font-size: 1.2rem;
     margin-bottom: 20px;
