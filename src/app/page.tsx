@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import CheckoutForm from "../components/CheckoutForm";
+
 import RazorpayForm from "../components/RazorpayForm";
 import styles from './page.module.css';
 
