@@ -4,26 +4,43 @@ import { useState } from "react";
 import axios from "axios";
 import styles from './RazorpayForm.module.css';
 
-const RazorpayForm = ({ jobs }) => {
-    const [error, setError] = useState(null);
+// Define the type for the jobs prop
+interface Jobs {
+  name: string;
+  price: number;
+  img: string;
+}
+
+interface RazorpayFormProps {
+  jobs: Jobs;
+}
+
+interface RazorpayResponse {
+  razorpay_payment_id: string;
+  razorpay_order_id: string;
+  razorpay_signature: string;
+}
+
+const RazorpayForm: React.FC<RazorpayFormProps> = ({ jobs }) => {
+    const [error, setError] = useState<string | null>(null);
 
     const handleRazorpayPayment = async () => {
         try {
             const orderUrl = "http://51.20.106.102:9000/api/payment/orders";
-            //replace the orderurl with your server endpoint
+            // Replace the orderUrl with your server endpoint
             const { data } = await axios.post(orderUrl, { amount: jobs.price, userId: "123456" });
             const options = {
-                key: "rzp_test_0pLj1oTm2LU4c9", // Your Razorpay keyid
+                key: "rzp_test_0pLj1oTm2LU4c9", // Your Razorpay key ID
                 amount: data.data.amount,
                 currency: data.data.currency,
                 name: jobs.name,
                 description: "Test Transaction",
                 image: jobs.img,
                 order_id: data.data.id,
-                handler: async (response) => {
+                handler: async (response: RazorpayResponse) => {
                     try {
                         const verifyUrl = "http://51.20.106.102:9000/api/payment/verify";
-                        //replace the url with your server endpoint
+                        // Replace the URL with your server endpoint
                         const { data } = await axios.post(verifyUrl, response);
                         console.log(data);
                     } catch (error) {
@@ -41,12 +58,12 @@ const RazorpayForm = ({ jobs }) => {
             setError("Error processing payment with Razorpay");
         }
     };
-    const [job, setjob] = useState({
+
+    const [job, setJob] = useState<Jobs>({
         name: "Razorpay Integration",
-        author: "Ashish sai naik",
         img: "https://akaunting.com/public/assets/media/54-mark-britto/razorpay/razorpay-logo.jpg",
         price: 250,
-      });
+    });
 
     return (
         <div>
