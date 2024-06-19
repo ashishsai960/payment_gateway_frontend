@@ -26,7 +26,7 @@ const RazorpayForm: React.FC<RazorpayFormProps> = ({ jobs }) => {
 
     const handleRazorpayPayment = async () => {
         try {
-            const orderUrl = "http://51.20.106.102:9000/api/payment/orders";
+            const orderUrl = "http://51.20.37.103:9000/api/payment/orders";
             // Replace the orderUrl with your server endpoint
             const { data } = await axios.post(orderUrl, { amount: jobs.price, userId: "123456" });
             const options = {
@@ -39,7 +39,7 @@ const RazorpayForm: React.FC<RazorpayFormProps> = ({ jobs }) => {
                 order_id: data.data.id,
                 handler: async (response: RazorpayResponse) => {
                     try {
-                        const verifyUrl = "http://51.20.106.102:9000/api/payment/verify";
+                        const verifyUrl = "http://51.20.37.103:9000/api/payment/verify";
                         // Replace the URL with your server endpoint
                         const { data } = await axios.post(verifyUrl, response);
                         console.log(data);
@@ -62,7 +62,7 @@ const RazorpayForm: React.FC<RazorpayFormProps> = ({ jobs }) => {
     const [job, setJob] = useState<Jobs>({
         name: "Razorpay Integration",
         img: "https://akaunting.com/public/assets/media/54-mark-britto/razorpay/razorpay-logo.jpg",
-        price: 250,
+        price: 350,
     });
 
     return (
